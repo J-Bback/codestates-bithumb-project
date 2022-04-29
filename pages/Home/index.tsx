@@ -246,7 +246,11 @@ const Home = (props: any) => {
 		}
 
 		if (searchValue) {
-			keys = keys.filter((v) => v.includes(searchValue.toUpperCase()));
+			keys = keys.filter(
+				(v) =>
+					v.includes(searchValue.toUpperCase()) ||
+					coinNameKR[v]?.includes(searchValue.toUpperCase())
+			);
 		}
 		// const sorted = keys.map((v) => currencyList[v].acc_trade_value_24H).sort((a, b) => a - b);
 		if (Math.ceil(keys.length / 30) !== totalPage) {
@@ -356,12 +360,12 @@ const Home = (props: any) => {
 					>
 						입금
 					</td>
-					<td style={{ width: "44px", textAlign: "center" }}>입금</td>
-					<td style={{ width: "44px", textAlign: "center" }}>입금</td>
+					<td style={{ width: "44px", textAlign: "center" }}>출금</td>
+					<td style={{ width: "44px", textAlign: "center" }}>차트</td>
 					<td
 						style={{ width: "65px", textAlign: "center", paddingRight: "23px" }}
 					>
-						입금
+						거래
 					</td>
 				</tr>
 			);

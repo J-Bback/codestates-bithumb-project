@@ -22,6 +22,7 @@ import Input from "../../atoms/Input";
 import Nav from "../../components/Nav";
 import Tab from "../../components/Tab";
 import Table from "../../components/Table";
+import AreaChart from "../../components/AreaChart";
 
 import styles from "./Exchange.module.scss";
 import { IMainContext } from "../../interface/interface";
@@ -497,17 +498,59 @@ const Exchange = (props: any) => {
 							<section style={{ flex: 2 }}>
 								<div className={styles.transaction}>
 									<div
-										style={{
-											color: "#F55467",
-											fontSize: 25,
-											fontWeight: 500,
-											width: 150,
-										}}
+										style={
+											Math.sign(Number(getCurrentFluctateRate())) === 1
+												? {
+														color: "#F75467",
+														fontSize: 25,
+														fontWeight: 500,
+														marginRight: 10,
+												  }
+												: Math.sign(Number(getCurrentFluctateRate())) === 0
+												? {
+														color: "#282828",
+														fontSize: 25,
+														fontWeight: 500,
+														marginRight: 10,
+												  }
+												: {
+														color: "#4386F9",
+														fontSize: 25,
+														fontWeight: 500,
+														marginRight: 10,
+												  }
+										}
 									>
 										{getCurrentPrice()}
 									</div>
-									<div className={styles.transaction_p}>
-										+{getCurrentFluctateRate()}
+									<div
+										style={
+											Math.sign(Number(getCurrentFluctateRate())) === 1
+												? {
+														backgroundColor: "#F75467",
+														color: "#ffffff",
+														padding: "3px 7px",
+														borderRadius: 5,
+														fontSize: 13,
+												  }
+												: Math.sign(Number(getCurrentFluctateRate())) === 0
+												? {
+														backgroundColor: "#282828",
+														color: "#ffffff",
+														padding: "3px 7px",
+														borderRadius: 5,
+														fontSize: 13,
+												  }
+												: {
+														backgroundColor: "#4386F9",
+														color: "#ffffff",
+														padding: "3px 7px",
+														borderRadius: 5,
+														fontSize: 13,
+												  }
+										}
+									>
+										{getCurrentFluctateRate()}
 									</div>
 								</div>
 
@@ -609,9 +652,12 @@ const Exchange = (props: any) => {
 								</div>
 
 								<div style={{ height: 140 }}>
-									<div className={styles.transaction_list_wrapper}>
+									<div style={{ width: 50 }}>
 										<div className={styles.trans_list_item_focused}>
 											<div>차트</div>
+										</div>
+										<div style={{ marginTop: 20 }}>
+											<AreaChart />
 										</div>
 									</div>
 								</div>
@@ -655,7 +701,8 @@ const Exchange = (props: any) => {
 									</div>
 								</div>
 							</section>
-							<div className={styles.trans_table_wrapper}>
+							<div style={{ flex: 1 }}>
+								{/* <div className={styles.trans_table_wrapper}> */}
 								{/* <table className={styles.trans_table}>
                   <tr className={styles.trans_table_title}>
                     <th>가격(KRW)</th>
