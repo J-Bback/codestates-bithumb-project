@@ -1,10 +1,9 @@
 # codestates-bithumb-project
 
 #### 1. 완성된 GIF 파일 및 배포 링크
+[실습영상.gif.zip](https://github.com/J-Bback/codestates-bithumb-project/files/8590257/gif.zip)
 
 수리중...
-
-<!-- [배포링크](https://codestates-bithumb-frontend.firebaseapp.com/) -->
 
 #### 2. 프로젝트 실행 방법
 
